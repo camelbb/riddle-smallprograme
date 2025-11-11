@@ -1,0 +1,81 @@
+/**app.wxss**/
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.container {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #FF9500;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  text-align: center;
+  color: #666666;
+  margin-bottom: 40rpx;
+}
+
+.button {
+  background-color: #FF9500;
+  color: white;
+  padding: 20rpx 40rpx;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  text-align: center;
+  margin: 20rpx 0;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+  opacity: 0.8;
+}
+
+.input {
+  width: 100%;
+  padding: 20rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  margin: 20rpx 0;
+  background-color: white;
+}
+
+.card {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 20rpx 0;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.success {
+  color: #07c160;
+}
+
+.error {
+  color: #e64340;
+}
+
+.score {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #FF9500;
+  text-align: center;
+  margin: 20rpx 0;
+}

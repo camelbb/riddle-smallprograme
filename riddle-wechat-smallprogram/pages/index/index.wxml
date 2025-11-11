@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">儿童谜语猜猜猜</view>
+  <view class="subtitle">选择一个主题开始游戏吧！</view>
+  
+  <!-- 主题选择区域 -->
+  <view class="theme-container">
+    <view wx:for="{{themes}}" wx:key="index" class="theme-item" bindtap="selectTheme" data-theme="{{item.name}}" data-themeid="{{item.id}}">
+      <view class="theme-icon">
+        <image src="/images/{{item.icon}}" class="icon" mode="aspectFit"></image>
+      </view>
+      <view class="theme-name">{{item.name}}</view>
+    </view>
+  </view>
+  
+  <!-- 说明信息 -->
+  <view class="instructions">
+    <view class="subtitle">游戏说明</view>
+    <view class="instruction-text">
+      1. 选择一个主题，系统会生成相关的谜语
+      <view>2. 猜对一题得1分，答错不得分</view>
+      <view>3. 支持语音播放题目和语音输入答案</view>
+      <view>4. 可以上下切换题目</view>
+    </view>
+  </view>
+</view>

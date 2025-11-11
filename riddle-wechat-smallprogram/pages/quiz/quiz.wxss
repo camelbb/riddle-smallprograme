@@ -1,0 +1,118 @@
+/* quiz.wxss */
+
+.header {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.progress {
+  font-size: 28rpx;
+  color: #666666;
+  margin-top: 10rpx;
+}
+
+.question {
+  font-size: 36rpx;
+  line-height: 1.8;
+  margin-bottom: 40rpx;
+  position: relative;
+  padding: 20rpx 0;
+  min-height: 160rpx;
+  display: flex;
+  align-items: center;
+}
+
+.voice-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5rpx 15rpx;
+  font-size: 24rpx;
+  background-color: #07c160;
+  color: white;
+}
+
+.voice-icon {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.answer-input {
+  position: relative;
+  margin-bottom: 30rpx;
+  height: 100rpx;
+}
+.answer-input .input { 
+    height: 100rpx;
+}
+
+.voice-input-button {
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5rpx 15rpx;
+  font-size: 24rpx;
+}
+
+.mic-icon {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.result {
+  margin-top: 30rpx;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #eeeeee;
+}
+
+.result-icon {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.hint {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999999;
+  background-color: #f8f8f8;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx 0;
+}
+
+.nav-button {
+  flex: 1;
+  margin: 0 20rpx;
+  border-radius: 50rpx;
+}
+
+/* 禁用状态按钮样式 */
+.button.disabled {
+  background-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.back-button {
+  text-align: center;
+  color: #666666;
+  font-size: 28rpx;
+  padding: 20rpx;
+}
+
+.home-button button {
+    color: #666666;
+}

@@ -1,0 +1,55 @@
+<!-- quiz.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">猜猜这是什么？</view>
+    <view class="theme">主题：{{currentTheme}}</view>
+    <view class="score">得分：{{score}}</view>
+    <view class="progress">第{{currentIndex + 1}}题 / 共{{totalCount}}题</view>
+  </view>
+  
+  <!-- 谜语卡片 -->
+  <view class="card">
+    <view class="question">
+      {{currentRiddle.question}}
+      <!-- 
+      <button class="voice-button" bindtap="playQuestion" size="mini" type="primary">
+        <image src="/images/voice.png" class="voice-icon"></image>
+        播放题目
+      </button>
+      -->
+    </view>
+    
+    <!-- 答案输入 -->
+    <view class="answer-input">
+      <input class="input" placeholder="请输入答案" value="{{userAnswer}}" bindinput="inputAnswer"/>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <view class="button" bindtap="submitAnswer" wx:if="{{!submitDisabled}}">提交答案</view>
+    <view class="button disabled" wx:else>已提交</view>
+    
+    <!-- 答案结果 -->
+    <view wx:if="{{isCorrect !== null}}" class="result">
+      <view wx:if="{{isCorrect}}" class="success">
+        <image src="/images/correct.png" class="result-icon"></image>
+        <text>恭喜你，答对了！</text>
+      </view>
+      <view wx:else class="error">
+        <image src="/images/error.png" class="result-icon"></image>
+        <text>答错了，再试试吧</text>
+      </view>
+      <view wx:if="{{showHint}}" class="hint">{{hintText}}</view>
+    </view>
+  </view>
+  
+  <!-- 题目切换按钮 -->
+  <view class="nav-buttons">
+    <button class="nav-button" bindtap="prevQuestion" type="default">上一题</button>
+    <button class="nav-button" bindtap="nextQuestion" type="primary">下一题</button>
+  </view>
+  
+  <!-- 返回首页 -->
+  <view class="home-button">
+    <button bindtap="backToHome" type="warn">返回首页</button>
+  </view>
+</view>
