@@ -40,12 +40,25 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # 复制项目文件
 COPY . .
 
+RUN chown -R www-data:www-data /var/www/html
+
 # 安装项目依赖（只安装生产环境依赖，增加重试机制和超时设置）
 RUN composer install --no-dev --optimize-autoloader --prefer-dist --no-scripts --no-progress --no-interaction --ignore-platform-reqs
 
 # 设置正确的文件权限
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage/logs 
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/vendor
+
+# 创建vendor目录的挂载后初始化脚本
+RUN mkdir -p /var/www/html/vendor && chown -R www-data:www-data /var/www/html/vendor && chmod -R 755 /var/www/html/vendor
+RUN echo '#!/bin/sh' > /init-vendor.sh && \
+    echo 'if [ ! -f "/var/www/html/vendor/autoload.php" ]; then' >> /init-vendor.sh && \
+    echo '    echo "Installing dependencies..."' >> /init-vendor.sh && \
+    echo '    composer install --no-dev --optimize-autoloader --prefer-dist --no-scripts --no-progress --no-interaction --ignore-platform-reqs' >> /init-vendor.sh && \
+    echo '    chown -R www-data:www-data /var/www/html/vendor' >> /init-vendor.sh && \
+    echo 'fi' >> /init-vendor.sh && \
+    chmod +x /init-vendor.sh 
 
 # 配置PHP-FPM
 RUN mkdir -p /usr/local/etc/php-fpm.d/
@@ -65,5 +78,5 @@ EXPOSE 8000
 # 创建必要的目录
 RUN mkdir -p /var/log/supervisor
 
-# 使用Supervisor启动服务
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+# 使用初始化脚本启动服务
+CMD ["sh", "-c", "/init-vendor.sh && /usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]
