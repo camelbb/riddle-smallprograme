@@ -6,8 +6,9 @@ Thumbs.db
 *~
 
 # 日志文件
-*.log
-logs
+!log.log
+/logs/*.log
+
 
 # 环境变量文件
 .env
@@ -38,7 +39,6 @@ logs
 *.sln
 
 # 数据库文件
-*.sql
 *.sqlite
 
 # 缓存文件

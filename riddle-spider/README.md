@@ -26,7 +26,6 @@ spider-python/
 ### 1. 安装依赖包
 
 ```bash
-cd spider-python
 pip install -r requirements.txt
 ```
 
