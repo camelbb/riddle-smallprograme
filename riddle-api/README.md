@@ -11,10 +11,8 @@
 
 ## 安装步骤
 
-1. 克隆代码与安装依赖
+1. 安装依赖
 ```bash
-# 克隆项目代码
-git clone [项目仓库地址]
 cd api-smallprogram
 # 安装依赖
 composer install
@@ -36,6 +34,8 @@ mysql -u username -p database_name < riddle.sql
 php -S localhost:8000 -t public
 ```
 服务将在 `http://localhost:8000` 启动。
+
+----
 
 ### 方法二：使用 Nginx（生产环境）
 配置 Web 服务器，将根目录指向 `public` 文件夹，如：
@@ -72,6 +72,8 @@ server {
     }
 }
 ```
+
+----
 
 ## 方法三：Docker容器化部署
 在.Docker文件夹，用于存放【容器部署】时所需的配置文件
@@ -113,15 +115,13 @@ docker-compose -f docker-compose.yml up -d
         "type": "植物",
         "update_time": "2025-10-15 11:27:21"
       },
-      {
-        "id": 2,
-        "type": "科技名词",
-        "update_time": "2025-10-15 11:29:08"
-      }
+      ....
     ]
   }
 }
 ```
+
+----
 
 ### 2. 根据谜语类型ID获取谜语列表（支持分页）
 
@@ -154,25 +154,9 @@ docker-compose -f docker-compose.yml up -d
     ]
   }
 }
-
-**响应示例**（缺少必填参数）：
-
-```json
-{
-  "code": 400,
-  "message": "type_id parameter is required",
-  "data": null
-}
-
-**响应示例**（无效 type_id）：
-
-```json
-{
-  "code": 400,
-  "message": "Invalid type_id",
-  "data": null
-}
 ```
+
+----
 
 ### 3. 根据谜语 ID 获取谜语详情
 
@@ -198,34 +182,7 @@ docker-compose -f docker-compose.yml up -d
 }
 ```
 
-**响应示例**（谜语不存在）：
-
-```json
-{
-  "code": 404,
-  "message": "Riddle not found",
-  "data": null
-}
-```
-
-**响应示例**（无效 ID）：
-
-```json
-{
-  "code": 400,
-  "message": "Invalid riddle id",
-  "data": null
-}
-
-**响应示例**（缺少必填参数）：
-
-```json
-{
-  "code": 400,
-  "message": "id parameter is required",
-  "data": null
-}
-```
+----
 
 ### 4. 随机获取指定类型的谜语（排行榜接口）
 
@@ -250,35 +207,9 @@ docker-compose -f docker-compose.yml up -d
         "answer": "玉米",
         "update_time": "2025-10-15 11:27:21"
       },
-      {
-        "id": 5,
-        "riddle_type_id": 1,
-        "riddle": "小时青青肚里空，长大头发蓬蓬松。姐姐撑船不离它，哥哥钓鱼拿手中。",
-        "answer": "竹子",
-        "update_time": "2025-10-15 11:27:21"
-      }
+      ......
     ]
   }
-}
-```
-
-**响应示例**（缺少必填参数）：
-
-```json
-{
-  "code": 400,
-  "message": "riddle_type parameter is required",
-  "data": null
-}
-```
-
-**响应示例**（无效 riddle_type）：
-
-```json
-{
-  "code": 400,
-  "message": "Invalid riddle_type",
-  "data": null
 }
 ```
 
@@ -299,6 +230,7 @@ docker-compose -f docker-compose.yml up -d
 - 404：请求的资源不存在
 - 500：服务器内部错误
 
+
 ## 项目结构
 
 ```
@@ -314,6 +246,7 @@ api-smallprogram/
 ├── storage/             # 存储目录
 └── vendor/              # Composer 依赖
 ```
+
 
 ## 开发说明
 
